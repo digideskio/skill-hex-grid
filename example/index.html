@@ -1,0 +1,53 @@
+<style media="screen">
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .skill-hex.active {
+        -webkit-transform: translate3d(0, -20px, 0);
+        opacity: 1;
+    }
+
+    .skill-hex img {
+        max-width: 100%;
+        /*border: 1px solid blue;*/
+        box-sizing: border-box;
+    }
+
+    /*a:nth-child(even) .skill-hex.active {
+        transform: translate3d(0, 20px, 0);
+    }*/
+
+    .skill-hex {
+        display: block;
+        width: 140px;
+        height: 162px;
+        -webkit-transition: -webkit-transform .2s ease-in-out;
+        /*border: 1px solid red;*/
+        box-sizing: border-box;
+        overflow: auto;
+    }
+
+    .skill-hex-grid {
+        width: 1076px;
+        margin: auto;
+        position: relative;
+    }
+
+    .grid-wrapper {
+        width: 100%;
+        position: relative;
+        height: 100%;
+        background: #333;
+        overflow: auto;
+        padding: 40px;
+        box-sizing: border-box;
+    }
+</style>
+
+<div id="grid-wrapper" class="grid-wrapper">
+    <div class="skill-hex-grid"></div>
+</div>
+
+<script charset="utf-8" src="bundle.js"></script>

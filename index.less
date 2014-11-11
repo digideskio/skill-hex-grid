@@ -1,0 +1,70 @@
+.skill-hex.active {
+    transform: translate3d(0, -20px, 0);
+    opacity: 1;
+}
+
+.skill-hex img {
+    max-width: 100%;
+    /*border: 1px solid blue;*/
+    box-sizing: border-box;
+}
+
+/*a:nth-child(even) .skill-hex.active {
+    transform: translate3d(0, 20px, 0);
+}*/
+
+.skill-hex {
+    display: block;
+    width: 140px;
+    height: 162px;
+    transition: transform .2s ease-in-out;
+    /*border: 1px solid red;*/
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &.hex-in-progress {
+        img {
+            position: relative;
+            z-index: 1;
+            opacity: .6;
+            top: 5px;
+            left: 1px;
+
+            transition: opacity .2s ease-in-out;
+        }
+
+        &:before {
+            content: 'K';
+            font-family: Icons;
+            color: #000;
+            margin: 0;
+            font-size: 200px;
+            line-height: 200px;
+            display: block;
+            position: absolute;
+            top: -17px;
+            left: -1px;
+            z-index: 0;
+            opacity: .1;
+        }
+
+        &:hover img {
+            opacity: 1;
+        }
+    }
+}
+
+.skill-hex-grid {
+    width: 1076px;
+    margin: auto;
+    position: relative;
+}
+
+.grid-wrapper {
+    width: 100%;
+    position: relative;
+    height: 100%;
+    overflow: auto;
+    padding: 40px;
+    box-sizing: border-box;
+}
