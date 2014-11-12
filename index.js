@@ -1,6 +1,8 @@
 var grid = require('hex-grid');
 var defined = require('defined');
 var render = require('./render');
+var each = require('async-each');
+var img = require('img');
 
 function SkillHexGrid ($el, data) {
     if (!(this instanceof SkillHexGrid)) return new SkillHexGrid($el, data);
@@ -20,11 +22,16 @@ function SkillHexGrid ($el, data) {
 SkillHexGrid.prototype.init = function () {
     var $grid = this.$grid;
 
-    $grid.innerHTML = this.skills.reduce(function (memo, s) {
+    var hexes = this.skills.reduce(function (memo, s) {
         return memo += render(s);
     }, '');
 
-    this.scan();
+    var me = this;
+    each(this.skills.map(function (s) { return s.img.src; }), img, function (err, imgs) {
+        $grid.innerHTML = hexes;
+        me.scan();
+    });
+
     window.addEventListener('resize', this.scan.bind(this));
     this.$el.addEventListener('scroll', this.scan.bind(this));
 
@@ -68,6 +75,8 @@ SkillHexGrid.prototype.scan = function () {
     };
 
     this.g = grid(opts, hexes);
+
+    this.$grid.style.height = this.g.height + 'px';
 };
 
 SkillHexGrid.prototype.enable = function () {
